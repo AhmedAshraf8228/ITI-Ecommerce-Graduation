@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/Menna-Allah-Yasser/EComUs-Spring
+[submodule "front"]
+	path = front
+	url = https://github.com/abdelrahman-sherbini/EComUs-FrontAngular
