@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  backend1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./ecomus_images:/ecomus/images
+      - ./front/public:/tmp/public
+    environment:
+      - local.image.storage.path=/ecomus/images
+      - local.image.base.url=http://localhost:8080
+      - spring.datasource.url=jdbc:mysql://mysql:3306/ecomus?createDatabaseIfNotExist=true
+      - spring.datasource.username=root
+      - spring.datasource.password=root
+    entrypoint: ["/bin/sh", "-c", "cp -r /tmp/public/* /ecomus/images/ && java -jar /app.jar"]
+    networks:
+      - bridge1
+  mysql:
+    image: mysql:8.0.40
+    restart: unless-stopped
+    ports:
+      - "3396:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecomus
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - bridge1
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile.front
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    networks:
+      - bridge1
+
+
+volumes:
+  db_data:
+networks:
+  bridge1:
+    driver: bridge
+
