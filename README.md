@@ -30,7 +30,7 @@ https://drive.google.com/file/d/1ARTzNSrNbESQHqxXymPPppOPYu1OwBVv/view?usp=shari
 
 ### For Customers
 - **User Registration & Login**: Create an account with email verification and password recovery
-- **Product Browsing**: Search and filter products by category, price, and other criteria
+- **Product Browsing**: Search, filter and sort products by category, price, purchase count and other criteria
 - **Shopping Cart**: Add products, modify quantities, and manage your cart
 - **Wishlist**: Save products for later and move them to cart when ready
 - **Order Management**: Place orders with cash or credit payment options and ability to cancel order
@@ -39,8 +39,8 @@ https://drive.google.com/file/d/1ARTzNSrNbESQHqxXymPPppOPYu1OwBVv/view?usp=shari
 ### For Admins
 - **Product Management**: Add, edit, and delete products with images and descriptions
 - **Category Management**: Organize products into categories
-- **User Management**: View and manage customer accounts
-- **Order Management**: Track and update order statuses
+- **User Management**: Search, filter and sort users,View and manage customer accounts
+- **Order Management**: Search, filter and sort orders,Track and update order statuses
 - **Analytics**: View sales data and customer information with filtering and sorting
 
 ## Tech Stack
